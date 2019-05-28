@@ -1,4 +1,4 @@
-# Vert.x Microservice Blueprint
+# Vert.x Microservice Blueprint (forked)
 
 [![Travis Build Status](https://travis-ci.org/sczyh30/vertx-blueprint-microservice.svg?branch=master)](https://travis-ci.org/sczyh30/vertx-blueprint-microservice)
 
@@ -10,6 +10,7 @@ This blueprint works with Vert.x **3.4.1**.
 > Note: We are refactoring the whole architecture of the microservice blueprint.
 This can take a long time and the improved new version is expected to be released
 by the end of May. See [here](https://github.com/sczyh30/vertx-blueprint-microservice/issues/17) for details.
+
 
 ## Content
 
@@ -62,3 +63,27 @@ To run the microservice with Docker Compose, please refer to the [running instru
 ## Contributing
 
 Contributions are definitely welcome !
+
+## Notes
+
+- Every high-level component contains at least 2 verticles
+- (1) **REST verticle**: provides a REST endpoint of the service and publishes it to the service discovery infrastructure
+- (2) **Service verticle**: responsible for publishing event bus services, message sources to the service discovery infrastructure and then deploy REST verticles
+- The app uses multiple kinds of services:
+- (A) *HTTP endpoint* (e.g. REST endpoint and gateway): the service is located using an HTTP URL
+- (B) *Event bus service*: we can do async RPC to consume event bus services (aka. service proxies) via the (clustered) event bus. The service is located using an event bus address.
+- (C) *Message source*: this kind of service publishes messages to specific addresses on event bus. The service is located using an event bus address.
+
+---
+
+- `microservice-blueprint-common`
+    - `BaseMicroserviceVerticle`: configures discovery, circuit breaker etc.
+    - `RestAPIVerticle`: includes common code for creating REST HTTP servers
+- Event bus services: `account`, `store` and `product` service
+    - By `@ProxyGen`, Vert.x can automatically generate service proxies
+    - Registration of service on event bus: `ProxyHelper.registerService`
+    - Publication of a EventBusService record to the discovery infrastructure: `discovery.publish()`
+- Inventory service: async API (Future-based), so only HTTP endpoint is published
+    - Use of `ConfigRetriever` (see `configurationRetriever` and `ConfigRetrieverHelper` enum in `microservice-blueprint-common`)
+- API Gateway
+    - Use of circuit breaker (see `dispatchRequests`)
