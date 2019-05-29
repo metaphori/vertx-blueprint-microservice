@@ -1,7 +1,5 @@
 # Vert.x Microservice Blueprint (forked)
 
-[![Travis Build Status](https://travis-ci.org/sczyh30/vertx-blueprint-microservice.svg?branch=master)](https://travis-ci.org/sczyh30/vertx-blueprint-microservice)
-
 Vert.x blueprint application - A micro-shop microservice application developed with Vert.x.
 This repo is intended to be an illustration on how to design microservice architecture and develop microservice applications using Vert.x.
 
@@ -33,12 +31,8 @@ by the end of May. See [here](https://github.com/sczyh30/vertx-blueprint-microse
 
 Detailed tutorials are available here!
 
-- English Version
-    - [Vert.x Blueprint - Micro Shop microservice practice (Development)](http://sczyh30.github.io/vertx-blueprint-microservice/index.html)
-    - [Vert.x Blueprint - Micro Shop microservice practice (API Gateway)](http://sczyh30.github.io/vertx-blueprint-microservice/api-gateway.html)
-- 中文版本
-    - [Vert.x 蓝图 - Micro Shop 微服务实战 (开发篇)](http://sczyh30.github.io/vertx-blueprint-microservice/cn/index.html)
-    - [Vert.x 蓝图 - Micro Shop 微服务实战 (API Gateway)](http://sczyh30.github.io/vertx-blueprint-microservice/cn/api-gateway.html)
+- [Vert.x Blueprint - Micro Shop microservice practice (Development)](http://sczyh30.github.io/vertx-blueprint-microservice/index.html)
+- [Vert.x Blueprint - Micro Shop microservice practice (API Gateway)](http://sczyh30.github.io/vertx-blueprint-microservice/api-gateway.html)
 
 ## Architecture
 

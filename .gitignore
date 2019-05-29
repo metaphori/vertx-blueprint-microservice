@@ -6,3 +6,4 @@
 build
 target
 .vertx
+*/src/main/generated
